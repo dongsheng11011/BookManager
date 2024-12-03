@@ -1,0 +1,239 @@
+JFDML JFormDesigner: "8.2.4.0.393" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JInternalFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq t {space :::p, par t {comp panel2::l::0:x, seq t {space :0:0:x, comp panel1:::p::p}}, space :p:45:p}}"
+			"$verticalGroup": "par l {seq l {comp panel2:::p:144:p, space :::p, comp panel1:::::x, space :::p}}"
+		} ) {
+			name: "this"
+			"visible": true
+			"closable": true
+			"iconifiable": true
+			"title": "图书管理"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {space :::p, par l {seq l {comp button3:::p::p, space s:::p, comp updateBtn:::p::p, space :::p, comp deleteBtn::::0:x, space :p:263:p}, seq {par l {seq {comp panel6:::p::p, space u:::p, comp panel4:::p::p, space :::p, comp queryBtn:::p:62:p, space :::p, comp resetTxtBtn:::p:60:p}, seq {comp panel5:::p:111:p, space :::p, comp panel8:::p::p, space :::p, comp panel7:::p::p}}, space :0:0:x}}, space :p:47:p}}"
+				"$verticalGroup": "par l {seq l {space :p:14:p, par b {comp button3::b:p::p, comp updateBtn::b:p::p, comp deleteBtn::b:p::p}, space s:::p, par t {comp panel5::t:p:40:p, comp panel8::t:p:40:p, comp panel7::t:p:40:p}, space :::p, par t {comp panel6::t:p:40:p, comp panel4::t:p:40:p, par b:l {comp queryBtn::b:p::p, comp resetTxtBtn::b:p::p}}, space :::x}}"
+			} ) {
+				name: "panel2"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {comp label6:::p:61:p, space :::p, comp BookTypeTxt:::p:106:p, space :::p}}"
+					"$verticalGroup": "par l {seq t {space :::p, par b {comp label6::b:p::p, comp BookTypeTxt::b:p::p}, space :::x}}"
+				} ) {
+					name: "panel4"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label6"
+						"text": "图书类别："
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "BookTypeTxt"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {comp label7:::p:46:p, space :::p, comp BookIdTxt:::p:59:p, space :::p}}"
+					"$verticalGroup": "par l {seq t {space :::p, par b {comp label7::b:p::p, comp BookIdTxt::b:p::p}, space :::x}}"
+				} ) {
+					name: "panel5"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label7"
+						"text": "图书id:"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "BookIdTxt"
+						"editable": false
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {comp label8:::p:49:p, space :::p, comp BookIsbnTxt:::p:125:p, space :::x}}"
+					"$verticalGroup": "par l {seq t {space :::p, par b {comp label8::b:p::p, comp BookIsbnTxt::b:p::p}, space :::x}}"
+				} ) {
+					name: "panel6"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label8"
+						"text": "isbn："
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "BookIsbnTxt"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {comp label9:::p:61:p, space u:::p, comp BookAuthorTxt::::114:x, space :::p}}"
+					"$verticalGroup": "par l {seq t {space :::p, par b {comp label9::b:p::p, comp BookAuthorTxt::b:p::p}, space :::x}}"
+				} ) {
+					name: "panel7"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label9"
+						"text": "图书作者："
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "BookAuthorTxt"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq l {comp label10:::p:61:p, space u:::p, comp BookTitleTxt:::p:117:p}}"
+					"$verticalGroup": "par l {seq t {space :::p, par b {comp label10::b:p::p, comp BookTitleTxt::b:p::p}, space :::x}}"
+				} ) {
+					name: "panel8"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label10"
+						"text": "图书标题："
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "BookTitleTxt"
+					} )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "queryBtn"
+					"text": "查询"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "queryBtn", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "deleteBtn"
+					"text": "删除图书"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deleteBtn", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button3"
+					"text": "添加图书"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "updateBtn"
+					"text": "修改图书"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "updateBtn", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "resetTxtBtn"
+					"text": "清空"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "resetTxtBtn", true ) )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :::p, comp scrollPane1::::550:x, space :::p}}"
+				"$verticalGroup": "par l {seq t {space :0:0:x, comp scrollPane1:::p:304:p}}"
+			} ) {
+				name: "panel1"
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JTable" ) {
+						name: "BookTable"
+						"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+						}, new java.util.Vector {
+							add( "Id" )
+							add( "图书名称" )
+							add( "作者" )
+							add( "图书类型" )
+							add( "isbn国际标准书号" )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( new com.jformdesigner.model.SwingTableColumn( null, 50, 0, 0, true ) )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 100, 0, 0, true ) )
+							add( null )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 90, 0, 0, true ) )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 130, 0, 0, true ) )
+						} )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "BookTableMouseClicked", true ) )
+					} )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 575, 480 )
+		} )
+	}
+}

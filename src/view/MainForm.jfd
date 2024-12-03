@@ -1,0 +1,58 @@
+JFDML JFormDesigner: "8.2.4.0.393" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :::p, comp panel1:::p:114:p, space :::p, comp Desktop:::p:582:p, space :::p}}"
+			"$verticalGroup": "par l {seq l {comp panel1:::::x, space :::p}, comp Desktop::l::404:x}"
+		} ) {
+			name: "this"
+			"title": "图书管理系统              当前用户："
+			"font": new java.awt.Font( "Dialog", 1, 14 )
+			add( new FormContainer( "javax.swing.JDesktopPane", new FormLayoutManager( class javax.swing.JDesktopPane ) ) {
+				name: "Desktop"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {par l {comp BookManagerBtn::l:p:109:p, comp BookTypeBtn::l:p:109:p, comp BookBorrowBtn::l:p:109:p, seq {space :p:12:p, comp label1:::p:103:p}, par t:l::p {comp Setting::l::109:x, comp UserManagerBtn::l::109:x}}, space :0:0:x}}"
+				"$verticalGroup": "par l {seq l {comp label1:::p:30:p, space :::p, comp BookManagerBtn:::p:57:p, space :::p, comp BookTypeBtn:::p:57:p, space :::p, comp BookBorrowBtn:::p:57:p, space :::p, comp UserManagerBtn:::p:57:p, space :::p, comp Setting:::p:57:p, space ::53:x}}"
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "功能列表"
+					"font": new java.awt.Font( "宋体", 0, 14 )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "BookManagerBtn"
+					"text": "图书管理"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BookManagerBtn", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "BookTypeBtn"
+					"text": "图书分类"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BookTypeBtn", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "BookBorrowBtn"
+					"text": "图书借阅"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "BookBorrowBtn", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "UserManagerBtn"
+					"text": "用户管理"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "UserManagerBtn", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "Setting"
+					"text": "设置"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "SettingBtn", true ) )
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 710, 435 )
+		} )
+	}
+}
+

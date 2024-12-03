@@ -1,0 +1,54 @@
+JFDML JFormDesigner: "8.2.4.0.393" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"resizable": false
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space :p:65:p, comp loginButton:::p::p, space ::91:x, comp resetButton:::p:80:p, space :p:60:p}, seq l {space :p:92:p, par l:::p {comp label1::::188:x, seq {par l {comp label2::l:p::p, comp label3::l:p::p}, space s:::p, par l:::p {comp userField::::134:x, comp pwdField::::134:x}}}, space ::94:x}}"
+				"$verticalGroup": "par l {seq l {space :p:46:p, comp label1:::p:42:p, space :::p, par b {comp label2::b:p::p, comp userField::b:p::p}, space s:::p, par l {comp label3:::p::p, comp pwdField:::p::p}, space :p:21:p, par b {comp resetButton::b:p::p, comp loginButton::b:p::p}, space ::22:x}}"
+			} ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "resetButton"
+					"text": "重置"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "reset", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "loginButton"
+					"text": "登录"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "login", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "orz  图书管理系统"
+					"font": new java.awt.Font( "新宋体", 1, 19 )
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "用户名"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label3"
+					"text": "密   码"
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "userField"
+					"text": "Aries"
+				} )
+				add( new FormComponent( "javax.swing.JPasswordField" ) {
+					name: "pwdField"
+					"text": "123456"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 400, 300 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}

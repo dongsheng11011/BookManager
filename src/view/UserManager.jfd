@@ -1,0 +1,58 @@
+JFDML JFormDesigner: "8.2.4.0.393" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JInternalFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:118:p, comp panel1:::p::p, space ::125:x}}"
+			"$verticalGroup": "par l {seq l {space :p:103:p, comp panel1:::p::p, space ::127:x}}"
+		} ) {
+			name: "this"
+			"visible": true
+			"title": "用户管理"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {par l {comp label1::l:p::p, comp label2::l:p::p, comp label3::l:p::p}, space s:::p, par l:::p {seq {par t:::p {comp passwordTxt1::l::156:x, comp UserNameTxt::l::156:x}, space u:::p, comp userModifyBtn::::43:x}, seq l {par t:::p {comp passwordTxt2::l::156:x, comp identityTxt::l::156:x}, space u:::p, comp pwdModifyBtn::::43:x}}, space ::25:x}}"
+				"$verticalGroup": "par l {seq l {space :p:14:p, par b {comp label1::b:p:25:p, comp UserNameTxt::b:p::p, comp userModifyBtn::b:p::p}, space :::p, par b {comp label2::b:p::p, comp passwordTxt1::b:p::p}, space :p:14:p, par b {comp passwordTxt2::b:p::p, comp pwdModifyBtn::b:p::p}, space :::p, par b {comp label3::b:p::p, comp identityTxt::b:p::p}, space ::40:x}}"
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "用户名："
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "UserNameTxt"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "密   码："
+				} )
+				add( new FormComponent( "javax.swing.JPasswordField" ) {
+					name: "passwordTxt1"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label3"
+					"text": "权   限："
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "identityTxt"
+					"editable": false
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "userModifyBtn"
+					"text": "修改"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "userModifyBtn", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JPasswordField" ) {
+					name: "passwordTxt2"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "pwdModifyBtn"
+					"text": "修改"
+				} )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 545, 450 )
+		} )
+	}
+}
