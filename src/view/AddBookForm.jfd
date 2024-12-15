@@ -1,0 +1,82 @@
+JFDML JFormDesigner: "8.2.4.0.393" Java: "17.0.6" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"resizable": false
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq {space ::57:x, par l {comp label1:::p:80:p, par l {comp label4::t:p::p, comp label3::t:p:108:p, comp label2::t:p:108:p}}, space u:::p, par l {comp BookAuthorTxt::t:p:152:p, comp BookTitleTxt::t:p:152:p, comp BookgenreTxt::t:p:152:p, comp BookIsbnTxt::t:p:152:p}, space :p:45:p}}"
+					"$verticalGroup": "par l {seq l {space :::x, par b {comp BookTitleTxt::b:p::p, comp label1::b:p:33:p}, par b {comp BookAuthorTxt::b:p::p, comp label2::b:p:29:p}, space :6:6:p, par b {comp BookgenreTxt::b:p::p, comp label3::b:p:35:p}, space :::p, par b {comp BookIsbnTxt::b:p::p, comp label4::b:p:36:p}, space :p:37:p}}"
+				} ) {
+					name: "contentPanel"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label1"
+						"text": "书名："
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "作者："
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "图书类型："
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": "isbn国际标准书号："
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "BookTitleTxt"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "BookAuthorTxt"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "BookgenreTxt"
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "BookIsbnTxt"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq {space :p:71:p, comp okButton:::p:80:p, space :p:57:p, comp cancelButton:::p:80:p, space ::86:x}}"
+					"$verticalGroup": "par l {par b {comp cancelButton::b:p::p, comp okButton::b:p::p}}"
+				} ) {
+					name: "buttonBar"
+					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "okButton"
+						"text": "确定"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "okBtn", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "cancelButton"
+						"text": "取消"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "cancelBtn", true ) )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "South"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label5"
+					"text": "添加图书"
+					"font": new java.awt.Font( "黑体", 1, 14 )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "North"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 265 )
+		} )
+	}
+}
