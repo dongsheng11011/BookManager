@@ -2,6 +2,7 @@ package dao;
 
 import entity.User;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,10 +49,35 @@ public class UserDao {
         return resultUser;
     }
 
-    public boolean Modify(Connection con, String userName)throws Exception {
+    public boolean ModifyUserName(Connection con, String userName)throws Exception {
         String sql="update t_user set userName = ? where id=?";
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setString(1,userName);
+        pstmt.setInt(2,user.getId());
+        int result = pstmt.executeUpdate();
+        return result!=0;
+    }
+    public boolean ModifyUserPwd(Connection con, String userPwd)throws Exception {
+        String querySql = "select passWord from t_user where id = ?";
+        PreparedStatement qstmt = con.prepareStatement(querySql);
+        qstmt.setInt(1,user.getId());
+        ResultSet resultSet = qstmt.executeQuery();
+        // 处理查询结果
+        StringBuilder resultq = new StringBuilder();
+        while(resultSet.next()){
+            String data = resultSet.getString("passWord");
+            resultq.append(data);
+        }
+        // 返回查询结果。
+        String s = resultq.toString();
+        if(s.equals(userPwd)) {
+            JOptionPane.showMessageDialog(null,"错误，与原密码一致");
+            return false;// 判断与修改的密码是否相等，相等则失败。
+        }
+        // 不相等，更新数据库中的数据。
+        String sql="update t_user set passWord = ? where id=?";
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setString(1,userPwd);
         pstmt.setInt(2,user.getId());
         int result = pstmt.executeUpdate();
         return result!=0;

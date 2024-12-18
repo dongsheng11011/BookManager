@@ -9,7 +9,9 @@ new FormModel {
 		} ) {
 			name: "this"
 			"visible": true
-			"title": "设置"
+			"title": "关于"
+			"closable": true
+			"iconifiable": true
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
 			"size": new java.awt.Dimension( 400, 300 )

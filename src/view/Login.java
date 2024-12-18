@@ -28,7 +28,7 @@ public class Login extends JFrame {
 
     private void reset(ActionEvent e) {
         // TODO add your code here
-        this.userField.setText("Aries");
+        this.userField.setText("admin");
         this.pwdField.setText("123456");
     }
 
@@ -81,7 +81,7 @@ public class Login extends JFrame {
             label3.setText("\u5bc6   \u7801");
 
             //---- userField ----
-            userField.setText("Aries");
+            userField.setText("admin");
 
             //---- pwdField ----
             pwdField.setText("123456");

@@ -48,6 +48,7 @@ public class AddBookForm extends JFrame {
             if(modifyNum == 1){
                 JOptionPane.showMessageDialog(null,"添加成功");
                 this.dispose();
+                BookManager.getBookManager().fillTable(new Book());
             }else{
                 JOptionPane.showMessageDialog(null,"添加失败");
             }

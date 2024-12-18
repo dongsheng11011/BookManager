@@ -24,6 +24,14 @@ public class BookManager extends JInternalFrame {
     public BookManager() {
         initComponents();
     }
+    private static BookManager bookManager;
+    public static BookManager getBookManager() {
+        if(bookManager == null){
+            bookManager = new BookManager();
+        }
+        return bookManager;
+    }
+
     private DbUtil dbUtil = DbUtil.getDbUtil();
     private BookDao bookDao = BookDao.getBookDao();
 
@@ -37,7 +45,7 @@ public class BookManager extends JInternalFrame {
         BookIsbnTxt.setText((String)BookTable.getValueAt(row,4));
     }
 
-    private void fillTable(Book book){
+    public void fillTable(Book book){
         //初始化 ->
         DefaultTableModel dtm = (DefaultTableModel) BookTable.getModel();
         dtm.setRowCount(0); // 设置成0 ，清空表格。
@@ -121,39 +129,40 @@ public class BookManager extends JInternalFrame {
 
     private void updateBtn(ActionEvent e) {
         // TODO add your code here
-//        String id = BookIdTxt.getText();
-//        String bookTypeName = BookTitleTxt.getText();
-//        String bookType = BookTypeTxt.getText();
-//        if(StringUtil.isEmpty(id)){
-//            JOptionPane.showMessageDialog(null,"请选择要修改的记录！");
-//            return;
-//        }
-//        if(StringUtil.isEmpty(bookTypeName)){
-//            JOptionPane.showMessageDialog(null,"请输入图书类别，名称不能为空！");
-//            return;
-//        }
-//        BookType bookType = new BookType(Integer.parseInt(id),bookTypeName,bookTypeDesc);
-//        Connection con = null;
-//        try{
-//            con = dbUtil.getCon();
-//            int modifyNum = bookTypeDao.update(con,bookType);
-//            if(modifyNum == 1){
-//                JOptionPane.showMessageDialog(null,"修改成功");
-//                this.resetValue();// 重置数据。
-//                this.fillTable(new BookType());
-//            }else{
-//                JOptionPane.showMessageDialog(null,"修改失败");
-//            }
-//        }catch (Exception exp){
-//            exp.printStackTrace();
-//            JOptionPane.showMessageDialog(null,"修改失败");
-//        }finally {
-//            try {
-//                dbUtil.closeCon(con);
-//            }catch (Exception exp){
-//                exp.printStackTrace();
-//            }
-//        }
+        String book_id = BookIdTxt.getText();
+        if(StringUtil.isEmpty(book_id)){
+            JOptionPane.showMessageDialog(null,"请选择要修改的记录！");
+            return;
+        }
+        Book book = new Book(Integer.parseInt(BookIdTxt.getText()),BookTitleTxt.getText(),BookAuthorTxt.getText(),
+                BookTypeTxt.getText(),BookIsbnTxt.getText());
+        Connection con = null;
+        try{
+            con = dbUtil.getCon();
+            int modifyNum = bookDao.update(con,book);
+            if(modifyNum == 1){
+                JOptionPane.showMessageDialog(null,"修改成功");
+                this.resetTxtBtn(e);// 重置数据。
+                this.fillTable(new Book());
+            }else{
+                JOptionPane.showMessageDialog(null,"修改失败");
+            }
+        }catch (Exception exp){
+            exp.printStackTrace();
+            JOptionPane.showMessageDialog(null,"修改失败");
+        }finally {
+            try {
+                dbUtil.closeCon(con);
+            }catch (Exception exp){
+                exp.printStackTrace();
+            }
+        }
+    }
+
+    private void addBookBtn(ActionEvent e) {
+        // TODO add your code here
+        AddBookForm addBookForm = AddBookForm.getAddBookForm();
+        addBookForm.setVisible(true);
     }
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
@@ -175,7 +184,7 @@ public class BookManager extends JInternalFrame {
         BookTitleTxt = new JTextField();
         queryBtn = new JButton();
         deleteBtn = new JButton();
-        button3 = new JButton();
+        addBookBtn = new JButton();
         updateBtn = new JButton();
         resetTxtBtn = new JButton();
         panel1 = new JPanel();
@@ -205,7 +214,7 @@ public class BookManager extends JInternalFrame {
                         .addGroup(panel4Layout.createSequentialGroup()
                             .addComponent(label6, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(BookTypeTxt, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BookTypeTxt, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
                             .addContainerGap())
                 );
                 panel4Layout.setVerticalGroup(
@@ -235,7 +244,7 @@ public class BookManager extends JInternalFrame {
                         .addGroup(panel5Layout.createSequentialGroup()
                             .addComponent(label7, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(BookIdTxt, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BookIdTxt, GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
                             .addContainerGap())
                 );
                 panel5Layout.setVerticalGroup(
@@ -288,9 +297,9 @@ public class BookManager extends JInternalFrame {
                     panel7Layout.createParallelGroup()
                         .addGroup(panel7Layout.createSequentialGroup()
                             .addComponent(label9, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(BookAuthorTxt, GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
-                            .addContainerGap())
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(BookAuthorTxt, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 );
                 panel7Layout.setVerticalGroup(
                     panel7Layout.createParallelGroup()
@@ -315,8 +324,9 @@ public class BookManager extends JInternalFrame {
                     panel8Layout.createParallelGroup()
                         .addGroup(panel8Layout.createSequentialGroup()
                             .addComponent(label10, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(BookTitleTxt, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(BookTitleTxt, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap())
                 );
                 panel8Layout.setVerticalGroup(
                     panel8Layout.createParallelGroup()
@@ -337,8 +347,9 @@ public class BookManager extends JInternalFrame {
             deleteBtn.setText("\u5220\u9664\u56fe\u4e66");
             deleteBtn.addActionListener(e -> deleteBtn(e));
 
-            //---- button3 ----
-            button3.setText("\u6dfb\u52a0\u56fe\u4e66");
+            //---- addBookBtn ----
+            addBookBtn.setText("\u6dfb\u52a0\u56fe\u4e66");
+            addBookBtn.addActionListener(e -> addBookBtn(e));
 
             //---- updateBtn ----
             updateBtn.setText("\u4fee\u6539\u56fe\u4e66");
@@ -355,45 +366,47 @@ public class BookManager extends JInternalFrame {
                     .addGroup(panel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(panel2Layout.createParallelGroup()
-                            .addGroup(panel2Layout.createSequentialGroup()
-                                .addComponent(button3)
-                                .addGap(18, 18, 18)
-                                .addComponent(updateBtn)
+                            .addGroup(GroupLayout.Alignment.TRAILING, panel2Layout.createSequentialGroup()
+                                .addGap(0, 26, Short.MAX_VALUE)
+                                .addComponent(panel5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(deleteBtn, GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
-                                .addGap(263, 263, 263))
+                                .addComponent(panel8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(panel7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
                             .addGroup(panel2Layout.createSequentialGroup()
                                 .addGroup(panel2Layout.createParallelGroup()
+                                    .addGroup(panel2Layout.createSequentialGroup()
+                                        .addComponent(addBookBtn)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(updateBtn)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(deleteBtn))
                                     .addGroup(panel2Layout.createSequentialGroup()
                                         .addComponent(panel6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(panel4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                        .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(queryBtn, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(resetTxtBtn, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panel2Layout.createSequentialGroup()
-                                        .addComponent(panel5, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(panel8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(panel7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(resetTxtBtn, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(47, 47, 47))
+                        .addContainerGap(32, Short.MAX_VALUE))
             );
             panel2Layout.setVerticalGroup(
                 panel2Layout.createParallelGroup()
                     .addGroup(panel2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                            .addComponent(button3)
+                            .addComponent(addBookBtn)
                             .addComponent(updateBtn)
                             .addComponent(deleteBtn))
-                        .addGap(18, 18, 18)
-                        .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addComponent(panel5, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panel8, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panel7, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panel2Layout.createParallelGroup()
+                            .addComponent(panel8, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panel7, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panel2Layout.createSequentialGroup()
+                                .addComponent(panel5, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panel2Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                             .addComponent(panel6, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
@@ -430,12 +443,25 @@ public class BookManager extends JInternalFrame {
                     new String[] {
                         "Id", "\u56fe\u4e66\u540d\u79f0", "\u4f5c\u8005", "\u56fe\u4e66\u7c7b\u578b", "isbn\u56fd\u9645\u6807\u51c6\u4e66\u53f7"
                     }
-                ));
+                ) {
+                    boolean[] columnEditable = new boolean[] {
+                        false, false, false, false, false
+                    };
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return columnEditable[columnIndex];
+                    }
+                });
                 {
                     TableColumnModel cm = BookTable.getColumnModel();
+                    cm.getColumn(0).setResizable(false);
                     cm.getColumn(0).setPreferredWidth(50);
+                    cm.getColumn(1).setResizable(false);
                     cm.getColumn(1).setPreferredWidth(100);
+                    cm.getColumn(2).setResizable(false);
+                    cm.getColumn(3).setResizable(false);
                     cm.getColumn(3).setPreferredWidth(90);
+                    cm.getColumn(4).setResizable(false);
                     cm.getColumn(4).setPreferredWidth(130);
                 }
                 BookTable.addMouseListener(new MouseAdapter() {
@@ -451,16 +477,13 @@ public class BookManager extends JInternalFrame {
             panel1.setLayout(panel1Layout);
             panel1Layout.setHorizontalGroup(
                 panel1Layout.createParallelGroup()
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
-                        .addContainerGap())
+                    .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE)
             );
             panel1Layout.setVerticalGroup(
                 panel1Layout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 304, GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 210, GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 13, Short.MAX_VALUE))
             );
         }
 
@@ -468,25 +491,20 @@ public class BookManager extends JInternalFrame {
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
-                .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                        .addComponent(panel2, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(0, 0, Short.MAX_VALUE)
-                            .addComponent(panel1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                    .addGap(45, 45, 45))
+                .addComponent(panel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addComponent(panel2, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panel2, GroupLayout.PREFERRED_SIZE, 132, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(panel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap())
         );
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
         fillTable(new Book());
+        BookTable.getTableHeader().setReorderingAllowed(false);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
@@ -508,7 +526,7 @@ public class BookManager extends JInternalFrame {
     private JTextField BookTitleTxt;
     private JButton queryBtn;
     private JButton deleteBtn;
-    private JButton button3;
+    private JButton addBookBtn;
     private JButton updateBtn;
     private JButton resetTxtBtn;
     private JPanel panel1;

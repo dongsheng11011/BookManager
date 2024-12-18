@@ -37,7 +37,7 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
 					name: "userField"
-					"text": "Aries"
+					"text": "admin"
 				} )
 				add( new FormComponent( "javax.swing.JPasswordField" ) {
 					name: "pwdField"

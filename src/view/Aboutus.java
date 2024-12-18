@@ -10,8 +10,8 @@ import javax.swing.GroupLayout;
 /**
  * @author AIM
  */
-public class Setting extends JInternalFrame {
-    public Setting() {
+public class Aboutus extends JInternalFrame {
+    public Aboutus() {
         initComponents();
     }
 
@@ -20,7 +20,9 @@ public class Setting extends JInternalFrame {
 
         //======== this ========
         setVisible(true);
-        setTitle("\u8bbe\u7f6e");
+        setTitle("\u5173\u4e8e");
+        setClosable(true);
+        setIconifiable(true);
         var contentPane = getContentPane();
 
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);

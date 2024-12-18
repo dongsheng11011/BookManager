@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JInternalFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq t {space :::p, par t {comp panel2::l::0:x, seq t {space :0:0:x, comp panel1:::p::p}}, space :p:45:p}}"
-			"$verticalGroup": "par l {seq l {comp panel2:::p:144:p, space :::p, comp panel1:::::x, space :::p}}"
+			"$horizontalGroup": "par l {comp panel2:::::x, comp panel1::l:::x}"
+			"$verticalGroup": "par l {seq l {comp panel2:::p:132:p, space :::p, comp panel1:::::x, space :::p}}"
 		} ) {
 			name: "this"
 			"visible": true
@@ -13,12 +13,12 @@ new FormModel {
 			"iconifiable": true
 			"title": "图书管理"
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq {space :::p, par l {seq l {comp button3:::p::p, space s:::p, comp updateBtn:::p::p, space :::p, comp deleteBtn::::0:x, space :p:263:p}, seq {par l {seq {comp panel6:::p::p, space u:::p, comp panel4:::p::p, space :::p, comp queryBtn:::p:62:p, space :::p, comp resetTxtBtn:::p:60:p}, seq {comp panel5:::p:111:p, space :::p, comp panel8:::p::p, space :::p, comp panel7:::p::p}}, space :0:0:x}}, space :p:47:p}}"
-				"$verticalGroup": "par l {seq l {space :p:14:p, par b {comp button3::b:p::p, comp updateBtn::b:p::p, comp deleteBtn::b:p::p}, space s:::p, par t {comp panel5::t:p:40:p, comp panel8::t:p:40:p, comp panel7::t:p:40:p}, space :::p, par t {comp panel6::t:p:40:p, comp panel4::t:p:40:p, par b:l {comp queryBtn::b:p::p, comp resetTxtBtn::b:p::p}}, space :::x}}"
+				"$horizontalGroup": "par l {seq {space :::p, par l {seq t {space :0:26:x, comp panel5:::p::p, space :::p, comp panel8:::p::p, space :::p, comp panel7:::p::p}, seq {par l {seq l {comp addBookBtn:::p::p, space :::p, comp updateBtn:::p::p, space :::p, comp deleteBtn:::p::p}, seq l {comp panel6:::p::p, space u:::p, comp panel4:::p::p, space u:::p, comp queryBtn:::p:62:p, space s:::p, comp resetTxtBtn:::p:60:p}}, space :0:0:x}}, space ::32:x}}"
+				"$verticalGroup": "par l {seq l {space :p:14:p, par b {comp addBookBtn::b:p::p, comp updateBtn::b:p::p, comp deleteBtn::b:p::p}, space :::p, par l {comp panel8::t:p:40:p, comp panel7::t:::x, seq l {comp panel5:::p:40:p, space :0:0:x}}, space :::p, par t {comp panel6::t:p:40:p, comp panel4::t:p:40:p, par b:l {comp queryBtn::b:p::p, comp resetTxtBtn::b:p::p}}, space :::x}}"
 			} ) {
 				name: "panel2"
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {comp label6:::p:61:p, space :::p, comp BookTypeTxt:::p:106:p, space :::p}}"
+					"$horizontalGroup": "par l {seq l {comp label6:::p:61:p, space :::p, comp BookTypeTxt:::p:76:p, space :::p}}"
 					"$verticalGroup": "par l {seq t {space :::p, par b {comp label6::b:p::p, comp BookTypeTxt::b:p::p}, space :::x}}"
 				} ) {
 					name: "panel4"
@@ -31,7 +31,7 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {comp label7:::p:46:p, space :::p, comp BookIdTxt:::p:59:p, space :::p}}"
+					"$horizontalGroup": "par l {seq l {comp label7:::p:46:p, space :::p, comp BookIdTxt::::53:x, space :::p}}"
 					"$verticalGroup": "par l {seq t {space :::p, par b {comp label7::b:p::p, comp BookIdTxt::b:p::p}, space :::x}}"
 				} ) {
 					name: "panel5"
@@ -58,7 +58,7 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {comp label9:::p:61:p, space u:::p, comp BookAuthorTxt::::114:x, space :::p}}"
+					"$horizontalGroup": "par l {seq l {comp label9:::p:61:p, space :::p, comp BookAuthorTxt:::p:125:p, space :::x}}"
 					"$verticalGroup": "par l {seq t {space :::p, par b {comp label9::b:p::p, comp BookAuthorTxt::b:p::p}, space :::x}}"
 				} ) {
 					name: "panel7"
@@ -71,7 +71,7 @@ new FormModel {
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq l {comp label10:::p:61:p, space u:::p, comp BookTitleTxt:::p:117:p}}"
+					"$horizontalGroup": "par l {seq l {comp label10:::p:61:p, space :::p, comp BookTitleTxt:::p:117:p, space :::p}}"
 					"$verticalGroup": "par l {seq t {space :::p, par b {comp label10::b:p::p, comp BookTitleTxt::b:p::p}, space :::x}}"
 				} ) {
 					name: "panel8"
@@ -94,8 +94,9 @@ new FormModel {
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deleteBtn", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "button3"
+					name: "addBookBtn"
 					"text": "添加图书"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "addBookBtn", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "updateBtn"
@@ -109,8 +110,8 @@ new FormModel {
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq l {space :::p, comp scrollPane1::::550:x, space :::p}}"
-				"$verticalGroup": "par l {seq t {space :0:0:x, comp scrollPane1:::p:304:p}}"
+				"$horizontalGroup": "par l {comp scrollPane1::l::563:x}"
+				"$verticalGroup": "par l {seq l {comp scrollPane1:::p:210:p, space :0:13:x}}"
 			} ) {
 				name: "panel1"
 				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
@@ -215,17 +216,17 @@ new FormModel {
 							add( null )
 							add( null )
 						}, new java.util.Vector {
-							add( null )
-							add( null )
-							add( null )
-							add( null )
-							add( null )
+							add( false )
+							add( false )
+							add( false )
+							add( false )
+							add( false )
 						}, new java.util.Vector {
-							add( new com.jformdesigner.model.SwingTableColumn( null, 50, 0, 0, true ) )
-							add( new com.jformdesigner.model.SwingTableColumn( null, 100, 0, 0, true ) )
-							add( null )
-							add( new com.jformdesigner.model.SwingTableColumn( null, 90, 0, 0, true ) )
-							add( new com.jformdesigner.model.SwingTableColumn( null, 130, 0, 0, true ) )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 50, 0, 0, false ) )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 100, 0, 0, false ) )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 90, 0, 0, false ) )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 130, 0, 0, false ) )
 						} )
 						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "BookTableMouseClicked", true ) )
 					} )
@@ -233,7 +234,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 575, 480 )
+			"size": new java.awt.Dimension( 575, 385 )
 		} )
 	}
 }

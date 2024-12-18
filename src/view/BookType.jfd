@@ -4,15 +4,240 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JInternalFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {space :0:610:x}"
-			"$verticalGroup": "par l {space :0:452:x}"
+			"$horizontalGroup": "par l {comp panel1::l:::x, comp panel2::t:::x}"
+			"$verticalGroup": "par l {seq l {comp panel1:::p::p, space :::p, comp panel2:::::x, space :::p}}"
 		} ) {
 			name: "this"
 			"visible": true
-			"title": "图书分类管理"
+			"title": "图书列表"
+			"closable": true
+			"iconifiable": true
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq l {space ::75:x, comp checkBox1:::p::p, space :::p, comp checkBox2:::p::p, space u:::p, comp searchTxt:::p:177:p, space s:::p, comp queryBtn:::p::p, space u:::p, comp resetTxtBtn:::p::p, space :p:26:p}}"
+				"$verticalGroup": "par l {seq t {space :0:17:x, par b {comp queryBtn::b:p::p, comp resetTxtBtn::b:p::p, comp searchTxt::b:p::p, comp checkBox2::b:p::p, comp checkBox1::b:p::p}, space :p:15:p}}"
+			} ) {
+				name: "panel1"
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "checkBox1"
+					"text": "已借阅"
+					addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "checkBox1ItemStateChanged", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JCheckBox" ) {
+					name: "checkBox2"
+					"text": "未借阅"
+					addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "checkBox2ItemStateChanged", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "searchTxt"
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "queryBtn"
+					"text": "搜索"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "queryBtn", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "resetTxtBtn"
+					"text": "清空"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "resetTxtBtn", true ) )
+				} )
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+				"$horizontalGroup": "par l {seq {space ::34:x, par l {seq t {comp borrowBtn:::p::p, space :p:121:p, comp returnBtn:::p::p, space :p:122:p}, seq t {par t {comp showTypeBtn1:::p::p, comp showTypeBtn2:::p::p, comp showAllBtn::t:p::p, comp showTypeBtn3::t:p::p, comp showTypeBtn4::t:p::p, comp showTypeBtn5:::p::p}, space s:::p, comp scrollPane1:::p::p, space :p:18:p}}}}"
+				"$verticalGroup": "par l {seq {par l {seq {space :::p, comp showAllBtn:::p::p, space :::p, comp showTypeBtn1:::p::p, space :::p, comp showTypeBtn2:::p::p, space :::p, comp showTypeBtn3:::p::p, space :::p, comp showTypeBtn4:::p::p, space :::p, comp showTypeBtn5:::p::p}, comp scrollPane1:::p:264:p}, space s:::p, par l {comp returnBtn:::p::p, comp borrowBtn:::p::p}, space ::45:x}}"
+			} ) {
+				name: "panel2"
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JTable" ) {
+						name: "BookTable"
+						"model": new com.jformdesigner.model.SwingTableModel( new java.util.Vector {
+							add( new java.util.Vector {
+								add( "" )
+								add( "" )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+							add( new java.util.Vector {
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+								add( null )
+							} )
+						}, new java.util.Vector {
+							add( "ID" )
+							add( "图书名称" )
+							add( "作者" )
+							add( "图书类型" )
+							add( "ISBN国际标准书号" )
+							add( "借阅情况" )
+						}, new java.util.Vector {
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( false )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+							add( null )
+						}, new java.util.Vector {
+							add( new com.jformdesigner.model.SwingTableColumn( null, 50, 0, 0, false ) )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 100, 0, 0, false ) )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 90, 0, 0, false ) )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 130, 0, 0, false ) )
+							add( new com.jformdesigner.model.SwingTableColumn( null, 0, 0, 0, false ) )
+						} )
+					} )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "showAllBtn"
+					"text": "全部"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "showAllBtn", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "showTypeBtn1"
+					"text": "教材"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "showTypeBtn1", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "showTypeBtn2"
+					"text": "散文"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "showTypeBtn2", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "showTypeBtn3"
+					"text": "小说"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "showTypeBtn3", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "returnBtn"
+					"text": "归还"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "returnBtn", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "borrowBtn"
+					"text": "借阅"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "borrowBtn", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "showTypeBtn4"
+					"text": "传记"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "showTypeBtn4", true ) )
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "showTypeBtn5"
+					"text": "科普"
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "showTypeBtn5", true ) )
+				} )
+			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 610, 470 )
+			"location": new java.awt.Point( 0, 5 )
+			"size": new java.awt.Dimension( 600, 450 )
 		} )
 	}
 }

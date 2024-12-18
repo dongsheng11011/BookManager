@@ -12,6 +12,7 @@ import util.DbUtil;
 import javax.swing.*;
 import javax.swing.GroupLayout;
 import java.sql.Connection;
+import java.util.Arrays;
 
 /**
  * @author AIM
@@ -32,6 +33,17 @@ public class UserManager extends JInternalFrame {
         }
     }
 
+    private void pwdModifyBtn(ActionEvent e) {
+        // TODO add your code here
+        String pwd1 = new String(passwordTxt1.getPassword());
+        String pwd2 = new String(passwordTxt2.getPassword());
+        if(pwd1.equals(pwd2)){
+            userService.UserPwdModify(pwd1);
+        }else{
+            JOptionPane.showMessageDialog(null,"两次输入的密码不一致！");
+        }
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         panel1 = new JPanel();
@@ -48,6 +60,8 @@ public class UserManager extends JInternalFrame {
         //======== this ========
         setVisible(true);
         setTitle("\u7528\u6237\u7ba1\u7406");
+        setClosable(true);
+        setIconifiable(true);
         var contentPane = getContentPane();
 
         //======== panel1 ========
@@ -71,6 +85,7 @@ public class UserManager extends JInternalFrame {
 
             //---- pwdModifyBtn ----
             pwdModifyBtn.setText("\u4fee\u6539");
+            pwdModifyBtn.addActionListener(e -> pwdModifyBtn(e));
 
             GroupLayout panel1Layout = new GroupLayout(panel1);
             panel1.setLayout(panel1Layout);

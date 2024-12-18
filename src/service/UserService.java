@@ -68,9 +68,40 @@ public class UserService {
         Connection con = null;
         try {
             con = dbUtil.getCon();
-            if(userDao.Modify(con,userName)){
+            if(userDao.ModifyUserName(con,userName)){
                 JOptionPane.showMessageDialog(null,"修改成功");
                 user.setUserName(userName);
+                return true;
+            }
+            else{
+                JOptionPane.showMessageDialog(null,"修改失败");
+                return false;
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }finally {
+            try{
+                dbUtil.closeCon(con);
+            }catch (Exception exp){
+                exp.printStackTrace();
+            }
+        }
+    }
+
+    public boolean UserPwdModify(String pwd){
+        if(StringUtil.isEmpty(pwd)){
+            //弹窗
+            JOptionPane.showMessageDialog(null,"密码不能为空！");
+            return false;
+        }
+        Connection con = null;
+        try {
+            con = dbUtil.getCon();
+            if(userDao.ModifyUserPwd(con,pwd)){
+                JOptionPane.showMessageDialog(null,"修改成功");
+                user.setPassWord(pwd);
                 return true;
             }
             else{

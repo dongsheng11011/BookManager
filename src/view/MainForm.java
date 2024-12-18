@@ -28,12 +28,12 @@ public class MainForm extends JFrame {
         return mainForm;
     }
 
-    private BookManager bookManager = new BookManager();
+    private BookManager bookManager = BookManager.getBookManager();
     private User user = User.getUser();
     private BookBorrow bookBorrow = null;
     private BookType bookType = null;
     private UserManager userManager = null;
-    private Setting setting = null;
+    private Aboutus setting = null;
 
     private Dimension Inner_Dme = null;// 桌面大小设置。
     private int index = 0;// 显示顺序。
@@ -79,7 +79,7 @@ public class MainForm extends JFrame {
     private void SettingBtn(ActionEvent e) {
         // TODO add your code here
         if (setting == null){
-            setting = new Setting();
+            setting = new Aboutus();
             setting.setSize(Inner_Dme);
             setting.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
             Desktop.add(setting);
@@ -101,6 +101,7 @@ public class MainForm extends JFrame {
         //======== this ========
         setTitle("\u56fe\u4e66\u7ba1\u7406\u7cfb\u7edf              \u5f53\u524d\u7528\u6237\uff1a");
         setFont(new Font(Font.DIALOG, Font.BOLD, 14));
+        setResizable(false);
         var contentPane = getContentPane();
 
         //======== panel1 ========
@@ -115,11 +116,11 @@ public class MainForm extends JFrame {
             BookManagerBtn.addActionListener(e -> BookManagerBtn(e));
 
             //---- BookTypeBtn ----
-            BookTypeBtn.setText("\u56fe\u4e66\u5206\u7c7b");
+            BookTypeBtn.setText("\u56fe\u4e66\u5217\u8868");
             BookTypeBtn.addActionListener(e -> BookTypeBtn(e));
 
             //---- BookBorrowBtn ----
-            BookBorrowBtn.setText("\u56fe\u4e66\u501f\u9605");
+            BookBorrowBtn.setText("\u501f\u9605\u8bb0\u5f55");
             BookBorrowBtn.addActionListener(e -> BookBorrowBtn(e));
 
             //---- UserManagerBtn ----
@@ -127,7 +128,7 @@ public class MainForm extends JFrame {
             UserManagerBtn.addActionListener(e -> UserManagerBtn(e));
 
             //---- Setting ----
-            Setting.setText("\u8bbe\u7f6e");
+            Setting.setText(" \u5173\u4e8e");
             Setting.addActionListener(e -> SettingBtn(e));
 
             GroupLayout panel1Layout = new GroupLayout(panel1);
