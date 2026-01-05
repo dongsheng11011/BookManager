@@ -1,0 +1,227 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : java_codetodb
+ Source Server Type    : MySQL
+ Source Server Version : 80032
+ Source Host           : localhost:3306
+ Source Schema         : bookmanage
+
+ Target Server Type    : MySQL
+ Target Server Version : 80032
+ File Encoding         : 65001
+
+ Date: 03/12/2024 18:26:46
+*/
+
+use bookmanage;
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for t_books
+-- ----------------------------
+DROP TABLE IF EXISTS `t_books`;
+CREATE TABLE `t_books`  (
+                            `book_id` int NOT NULL AUTO_INCREMENT,
+                            `title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                            `author` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                            `genre` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+                            `isbn` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                            PRIMARY KEY (`book_id`) USING BTREE,
+                            UNIQUE INDEX `isbn`(`isbn` ASC) USING BTREE
+);
+
+-- ----------------------------
+-- Records of t_books
+-- ----------------------------
+INSERT INTO t_books (title, author, genre, isbn)
+VALUES
+    ('时间简史', '斯蒂芬·霍金', '科普', '9787544270875'),
+    ('人类简史', '尤瓦尔·赫拉利', '科普', '9787544298646'),
+    ('未来简史', '尤瓦尔·赫拉利', '科普', '9787544298769'),
+    ('科学怪人', '玛丽·雪莱', '科普', '9787020055353'),
+    ('AI 2041', '李开复', '科普', '9787302737464'),
+    ('最强大脑', '韩松', '科普', '9787300151190'),
+    ('微物之神', '艾萨克·阿西莫夫', '科普', '9787544276747'),
+    ('自控力', '凯利·麦格尼格尔', '科普', '9787511340711'),
+    ('黑客与画家', '保罗·格雷厄姆', '科普', '9787508625192'),
+    ('深度工作', '卡尔·纽波特', '科普', '9787508624352');
+
+INSERT INTO t_books (title, author, genre, isbn)
+VALUES
+    ('成为', '米歇尔·奥巴马', '传记', '9787508686718'),
+    ('天才', '波利娜', '传记', '9787510397229'),
+    ('热爱', '汪峰', '传记', '9787513301234'),
+    ('乔布斯传', '沃尔特·艾萨克森', '传记', '9787508679932'),
+    ('富兰克林自传', '本杰明·富兰克林', '传记', '9787544262712'),
+    ('李光耀回忆录', '李光耀', '传记', '9787508648727'),
+    ('朱元璋传', '黄仁宇', '传记', '9787020037499'),
+    ('马克·吐温自传', '马克·吐温', '传记', '9787533152760'),
+    ('黑天鹅', '纳西姆·尼古拉斯·塔勒布', '传记', '9787108037469'),
+    ('爱因斯坦传', '沃尔特·艾萨克森', '传记', '9787508677082');
+
+INSERT INTO t_books (title, author, genre, isbn)
+VALUES
+    ('高等数学', '同济大学', '教材', '9787302331019'),
+    ('物理学', '大卫·哈雷', '教材', '9787121202345'),
+    ('大学英语', '李磊', '教材', '9787107174791'),
+    ('线性代数', '郭开贞', '教材', '9787040442832'),
+    ('统计学原理', '叶红', '教材', '9787302401219'),
+    ('数据库系统概论', '王珊', '教材', '9787121111937'),
+    ('计算机网络', '谢希仁', '教材', '9787111523592'),
+    ('高等代数', '同济大学', '教材', '9787302071257'),
+    ('数据结构', '严蔚敏', '教材', '9787302216955'),
+    ('算法设计与分析', '许志祥', '教材', '9787111262213');
+
+INSERT INTO t_books (title, author, genre, isbn)
+VALUES
+    ('沈默的大多数', '王小波', '散文', '9787508602254'),
+    ('活法', '稻盛和夫', '散文', '9787508622900'),
+    ('人性的弱点', '戴尔·卡耐基', '散文', '9787111523652'),
+    ('曾国藩家书', '曾国藩', '散文', '9787108021178'),
+    ('细说人生', '林清玄', '散文', '9787531363487'),
+    ('致自己', '林清玄', '散文', '9787530170156'),
+    ('当下的力量', '厄尔·托尔', '散文', '9787544273385'),
+    ('不死鸟', '阿米塔·戈珀', '散文', '9787532765097'),
+    ('三体: 死神永生', '刘慈欣', '散文', '9787229108810'),
+    ('改变，从这里开始', '李开复', '散文', '9787508645917');
+
+INSERT INTO t_books (title, author, genre, isbn)
+VALUES
+    ('活着', '余华', '小说', '9787506365438'),
+    ('白夜行', '东野圭吾', '小说', '9787506365439'),
+    ('平凡的世界', '路遥', '小说', '9787506365440'),
+    ('百年孤独', '加西亚·马尔克斯', '小说', '9787506365441'),
+    ('挪威的森林', '村上春树', '小说', '9787544264419'),
+    ('追风筝的人', '卡勒德·胡赛尼', '小说', '9787536692939'),
+    ('嫌疑人X的献身', '东野圭吾', '小说', '9787506364523'),
+    ('一九八四', '乔治·奥威尔', '小说', '9787532724285'),
+    ('茶花女', '小仲马', '小说', '9787020056466'),
+    ('远大前程', '查尔斯·狄更斯', '小说', '9787020100855');
+
+DROP TABLE IF EXISTS `t_borrow_status`;
+
+CREATE TABLE `t_borrow_status` (
+                                   `book_id` INT NOT NULL,                   -- 外键，关联到 t_books 的 book_id
+                                   `state` ENUM('已借阅', '未借阅') NOT NULL,  -- 借阅状态，只有“已借阅”和“未借阅”两种
+                                   FOREIGN KEY (`book_id`) REFERENCES `t_books`(`book_id`)  -- 外键约束，关联 t_books 表
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `t_borrow_status` (`book_id`, `state`)
+VALUES
+    (1, '未借阅'), (2, '未借阅'), (3, '未借阅'), (4, '未借阅'), (5, '未借阅'),
+    (6, '未借阅'), (7, '未借阅'), (8, '未借阅'), (9, '未借阅'), (10, '未借阅'),
+
+    (11, '未借阅'), (12, '未借阅'), (13, '未借阅'), (14, '未借阅'), (15, '未借阅'),
+    (16, '未借阅'), (17, '未借阅'), (18, '未借阅'), (19, '未借阅'), (20, '未借阅'),
+
+    (21, '未借阅'), (22, '未借阅'), (23, '未借阅'), (24, '未借阅'), (25, '未借阅'),
+    (26, '未借阅'), (27, '未借阅'), (28, '未借阅'), (29, '未借阅'), (30, '未借阅'),
+
+    (31, '未借阅'), (32, '未借阅'), (33, '未借阅'), (34, '未借阅'), (35, '未借阅'),
+    (36, '未借阅'), (37, '未借阅'), (38, '未借阅'), (39, '未借阅'), (40, '未借阅'),
+
+    (41, '未借阅'), (42, '未借阅'), (43, '未借阅'), (44, '未借阅'), (45, '未借阅'),
+    (46, '未借阅'), (47, '未借阅'), (48, '未借阅'), (49, '未借阅'), (50, '未借阅');
+
+UPDATE `t_borrow_status`
+SET `state` = '未借阅'
+WHERE `book_id` = 1;
+
+SELECT state FROM t_borrow_status WHERE book_id = 1;
+
+select * from borrow_status_audit;
+
+DROP TRIGGER IF EXISTS after_update_borrow_status;
+DELIMITER $$
+
+CREATE TRIGGER after_update_borrow_status
+    AFTER UPDATE ON `t_borrow_status`
+    FOR EACH ROW
+BEGIN
+    DECLARE operation_type VARCHAR(20);
+
+    -- 根据更新后的状态决定操作类型
+    IF NEW.state = '已借阅' THEN
+        SET operation_type = '借阅';
+    ELSEIF NEW.state = '未借阅' THEN
+        SET operation_type = '归还';
+    ELSE
+        SET operation_type = '其他';  -- 可以处理其他可能的状态
+    END IF;
+
+    -- 插入更新记录到审计表
+    INSERT INTO `borrow_status_audit` (
+        `book_id`,
+        `new_state`,
+        `updated_at`,
+        `operation`,
+        `updated_by`
+    )
+    VALUES (
+               OLD.book_id,             -- 旧状态的 book_id
+               NEW.state,               -- 新状态
+               NOW(),                   -- 当前时间（更新时间）
+               operation_type,          -- 动态计算的操作类型（借阅或归还）
+               'admin'              -- 假设操作人为 'admin'，可以替换成实际操作人
+           );
+END$$
+
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS `after_book_insert`;
+DELIMITER $$
+
+CREATE TRIGGER after_book_insert
+AFTER INSERT ON t_books
+FOR EACH ROW
+BEGIN
+    INSERT INTO t_borrow_status (book_id, state)
+    VALUES (NEW.book_id, '未借阅');
+END$$
+
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS `BeforeDeleteBooks`;
+DELIMITER $$
+
+CREATE TRIGGER BeforeDeleteBooks
+BEFORE DELETE ON t_books
+FOR EACH ROW
+BEGIN
+    DELETE FROM t_borrow_status WHERE book_id = OLD.book_id;
+END $$
+
+DELIMITER ;
+
+DROP TABLE IF EXISTS `borrow_status_audit`;
+CREATE TABLE `borrow_status_audit` (
+                                       `audit_id` INT AUTO_INCREMENT PRIMARY KEY,   -- 日志ID
+                                       `book_id` INT NOT NULL,                      -- 书籍ID
+                                       `new_state` VARCHAR(255),                    -- 更新后的状态
+                                       `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP,  -- 更新时间
+                                       `operation` VARCHAR(50),                     -- 操作类型（如：UPDATE）
+                                       `updated_by` VARCHAR(100)                    -- 操作人
+);
+
+-- ----------------------------
+-- Table structure for t_user
+-- ----------------------------
+DROP TABLE IF EXISTS `t_user`;
+CREATE TABLE `t_user`  (
+                           `id` int NOT NULL AUTO_INCREMENT,
+                           `userName` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                           `passWord` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+                           `identity` varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'student',
+                           PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_user
+-- ----------------------------
+INSERT INTO `t_user` VALUES (1, 'admin', '123456', '管理员');
+INSERT INTO `t_user` VALUES (2, '220207777', '123456', 'student');
+INSERT INTO `t_user` VALUES (4, 'Aries', '123456', 'student');
+
+SET FOREIGN_KEY_CHECKS = 1;
